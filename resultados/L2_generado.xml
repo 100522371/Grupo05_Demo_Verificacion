@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="6" time="0.100" timestamp="2026-11-24T00:44:08.595433+01:00" hostname="LAPTOP-3HEURQOS"><testcase classname="tests.test_propiedades" name="test_d1_propiedad_resultado_ordenado" time="0.002"><failure message="AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))&#10;assert {'intento': 8, 'original': ([56, 38, 46, 42, 26, 5, ...], [43, 35, 51, -16, 17, 20, ...]), 'minimo': ([1, 8], [8, 1])} is None">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d1_propiedad_resultado_ordenado(mod):
+&gt;       _comprobar(lambda a, b: mod.clientes_comunes(a, b) == sorted(mod.clientes_comunes(a, b)))
+
+tests\test_propiedades.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+propiedad = &lt;function test_d1_propiedad_resultado_ordenado.&lt;locals&gt;.&lt;lambda&gt; at 0x000001DD8AB43060&gt;
+
+    def _comprobar(propiedad):
+        r = buscar_contraejemplo(propiedad)
+&gt;       assert r is None, (
+            f"Contraejemplo mínimo: {r['minimo']} "
+            f"(encontrado en el intento {r['intento']}; entrada original {r['original']})"
+        )
+E       AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))
+E       assert {'intento': 8, 'original': ([56, 38, 46, 42, 26, 5, ...], [43, 35, 51, -16, 17, 20, ...]), 'minimo': ([1, 8], [8, 1])} is None
+
+tests\test_propiedades.py:16: AssertionError</failure></testcase><testcase classname="tests.test_propiedades" name="test_d1_propiedad_sin_duplicados" time="0.003" /><testcase classname="tests.test_propiedades" name="test_d1_propiedad_solo_elementos_comunes" time="0.002" /><testcase classname="tests.test_propiedades" name="test_d1_propiedad_oraculo_diferencial" time="0.001"><failure message="AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))&#10;assert {'intento': 8, 'original': ([56, 38, 46, 42, 26, 5, ...], [43, 35, 51, -16, 17, 20, ...]), 'minimo': ([1, 8], [8, 1])} is None">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d1_propiedad_oraculo_diferencial(mod):
+        # Oráculo: una implementación de referencia, sencilla y fácil de revisar.
+&gt;       _comprobar(lambda a, b: mod.clientes_comunes(a, b) == sorted(set(a) &amp; set(b)))
+
+tests\test_propiedades.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+propiedad = &lt;function test_d1_propiedad_oraculo_diferencial.&lt;locals&gt;.&lt;lambda&gt; at 0x000001DD8AB43B60&gt;
+
+    def _comprobar(propiedad):
+        r = buscar_contraejemplo(propiedad)
+&gt;       assert r is None, (
+            f"Contraejemplo mínimo: {r['minimo']} "
+            f"(encontrado en el intento {r['intento']}; entrada original {r['original']})"
+        )
+E       AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))
+E       assert {'intento': 8, 'original': ([56, 38, 46, 42, 26, 5, ...], [43, 35, 51, -16, 17, 20, ...]), 'minimo': ([1, 8], [8, 1])} is None
+
+tests\test_propiedades.py:16: AssertionError</failure></testcase><testcase classname="tests.test_propiedades" name="test_d2a_propiedad_nombres_aleatorios" time="0.001"><failure message="Failed: Falla con el nombre &quot;'jzPde&quot; (intento 1): devolvió []">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d2a_propiedad_nombres_aleatorios(mod):
+        """Para cualquier nombre almacenado, la consulta debe devolver su pedido."""
+        rng = random.Random(7)
+        alfabeto = string.ascii_letters + " áéíóúñÑ'-"
+        for intento in range(1, 201):
+            nombre = "".join(rng.choice(alfabeto) for _ in range(rng.randint(1, 12)))
+            conn = crear_bd([(1, nombre, "2026-01-01", 1.0)])
+            obtenido = [f[0] for f in mod.pedidos_de_cliente(conn, nombre)]
+            conn.close()
+            if obtenido != [1]:
+&gt;               pytest.fail(f"Falla con el nombre {nombre!r} (intento {intento}): devolvió {obtenido}")
+E               Failed: Falla con el nombre "'jzPde" (intento 1): devolvió []
+
+tests\test_propiedades.py:49: Failed</failure></testcase><testcase classname="tests.test_propiedades" name="test_d3_propiedad_formato_del_token" time="0.001" /></testsuite></testsuites>

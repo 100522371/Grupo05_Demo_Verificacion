@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="7" time="0.119" timestamp="2026-11-24T00:44:07.628153+01:00" hostname="LAPTOP-3HEURQOS"><testcase classname="tests.test_ampliados" name="test_d1_ampliado_entrada_de_humaneval_plus" time="0.002"><failure message="assert [8, 1, 6] == [1, 6, 8]&#10;  &#10;  At index 0 diff: 8 != 1&#10;  Use -v to get more diff">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d1_ampliado_entrada_de_humaneval_plus(mod):
+        # Entrada añadida por HumanEval+ (Liu et al., 2023, fig. 1)
+&gt;       assert mod.clientes_comunes([6, 8, 1], [6, 8, 1]) == [1, 6, 8]
+E       assert [8, 1, 6] == [1, 6, 8]
+E         
+E         At index 0 diff: 8 != 1
+E         Use -v to get more diff
+
+tests\test_ampliados.py:13: AssertionError</failure></testcase><testcase classname="tests.test_ampliados" name="test_d1_ampliado_identificadores_negativos" time="0.001"><failure message="assert [3, -2, -1] == [-2, -1, 3]&#10;  &#10;  At index 0 diff: 3 != -2&#10;  Use -v to get more diff">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d1_ampliado_identificadores_negativos(mod):
+&gt;       assert mod.clientes_comunes([-1, -2, 3], [3, -2, -1]) == [-2, -1, 3]
+E       assert [3, -2, -1] == [-2, -1, 3]
+E         
+E         At index 0 diff: 3 != -2
+E         Use -v to get more diff
+
+tests\test_ampliados.py:17: AssertionError</failure></testcase><testcase classname="tests.test_ampliados" name="test_d1_ampliado_duplicados" time="0.000" /><testcase classname="tests.test_ampliados" name="test_d2a_ampliado_nombre_con_apostrofo" time="0.001"><failure message="assert [] == [4]&#10;  &#10;  Right contains one more item: 4&#10;  Use -v to get more diff">conn = &lt;sqlite3.Connection object at 0x000002B7E731FD30&gt;
+mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d2a_ampliado_nombre_con_apostrofo(conn, mod):
+        filas = mod.pedidos_de_cliente(conn, "O'Brien")
+&gt;       assert [f[0] for f in filas] == [4]
+E       assert [] == [4]
+E         
+E         Right contains one more item: 4
+E         Use -v to get more diff
+
+tests\test_ampliados.py:26: AssertionError</failure></testcase><testcase classname="tests.test_ampliados" name="test_d2a_ampliado_nombre_con_tildes_y_espacios" time="0.001" /><testcase classname="tests.test_ampliados" name="test_d2a_ampliado_error_de_bd_no_se_oculta" time="0.001"><failure message="Failed: DID NOT RAISE Error">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d2a_ampliado_error_de_bd_no_se_oculta(mod):
+        # Una BD sin la tabla "pedidos" es un error, no un cliente sin pedidos.
+        vacia = sqlite3.connect(":memory:")
+&gt;       with pytest.raises(sqlite3.Error):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE Error
+
+tests\test_ampliados.py:37: Failed</failure></testcase><testcase classname="tests.test_ampliados" name="test_d3_ampliado_longitud_personalizada" time="0.001" /></testsuite></testsuites>

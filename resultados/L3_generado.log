@@ -1,0 +1,37 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+______________________ test_d2b_seguridad_inyeccion_sql _______________________
+
+conn = <sqlite3.Connection object at 0x0000024999CCAC50>
+mod = <module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'>
+
+    def test_d2b_seguridad_inyeccion_sql(conn, mod):
+        filas = mod.pedidos_de_cliente(conn, "x' OR '1'='1")
+>       assert filas == [], f"La entrada maliciosa devolvió {len(filas)} pedidos de otros clientes"
+E       AssertionError: La entrada maliciosa devolvió 5 pedidos de otros clientes
+E       assert [(2, '2026-01...3-02', 120.0)] == []
+E         
+E         Left contains 5 more items, first extra item: (2, '2026-01-15', 75.5)
+E         Use -v to get more diff
+
+tests\test_seguridad.py:11: AssertionError
+_____________ test_d3_seguridad_token_no_reproducible_con_semilla _____________
+
+mod = <module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'>
+
+    def test_d3_seguridad_token_no_reproducible_con_semilla(mod):
+        # Si fijar la semilla de 'random' reproduce el token, el token depende de un
+        # generador pseudoaleatorio no criptográfico: con su estado, se puede predecir.
+        random.seed(1234)
+        t1 = mod.generar_token_restablecimiento()
+        random.seed(1234)
+        t2 = mod.generar_token_restablecimiento()
+>       assert t1 != t2, f"Mismo token con la misma semilla: {t1}"
+E       AssertionError: Mismo token con la misma semilla: 7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw
+E       assert '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw' != '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw'
+
+tests\test_seguridad.py:21: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_seguridad.py::test_d2b_seguridad_inyeccion_sql - AssertionE...
+FAILED tests/test_seguridad.py::test_d3_seguridad_token_no_reproducible_con_semilla
+2 failed in 0.13s

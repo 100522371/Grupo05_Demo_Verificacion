@@ -1,0 +1,2 @@
+asistente,modelo_version,fecha,repeticion,L0_superados,L1_superados,L2_superados,L3_superados,L4_hallazgos_reglas,L5_dependencias_marcadas,minutos_revision_L6,observaciones
+ejemplo_controlado,pedidos_generado.py,2026-11-22,1,8/8,3/7,3/6,0/2,"S608, BLE001, S311",sqlite-injection-guard (BLOQUEAR),,"Defectos conocidos de antemano (ver caso/prompt_original.md)"

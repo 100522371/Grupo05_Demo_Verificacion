@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.102" timestamp="2026-11-24T00:44:09.345165+01:00" hostname="LAPTOP-3HEURQOS"><testcase classname="tests.test_seguridad" name="test_d2b_seguridad_inyeccion_sql" time="0.004"><failure message="AssertionError: La entrada maliciosa devolvió 5 pedidos de otros clientes&#10;assert [(2, '2026-01...3-02', 120.0)] == []&#10;  &#10;  Left contains 5 more items, first extra item: (2, '2026-01-15', 75.5)&#10;  Use -v to get more diff">conn = &lt;sqlite3.Connection object at 0x0000024999CCAC50&gt;
+mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d2b_seguridad_inyeccion_sql(conn, mod):
+        filas = mod.pedidos_de_cliente(conn, "x' OR '1'='1")
+&gt;       assert filas == [], f"La entrada maliciosa devolvió {len(filas)} pedidos de otros clientes"
+E       AssertionError: La entrada maliciosa devolvió 5 pedidos de otros clientes
+E       assert [(2, '2026-01...3-02', 120.0)] == []
+E         
+E         Left contains 5 more items, first extra item: (2, '2026-01-15', 75.5)
+E         Use -v to get more diff
+
+tests\test_seguridad.py:11: AssertionError</failure></testcase><testcase classname="tests.test_seguridad" name="test_d3_seguridad_token_no_reproducible_con_semilla" time="0.001"><failure message="AssertionError: Mismo token con la misma semilla: 7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw&#10;assert '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw' != '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw'">mod = &lt;module 'pedidos_generado' from 'C:\\Users\\marti\\demo_verificacion_ia\\caso\\pedidos_generado.py'&gt;
+
+    def test_d3_seguridad_token_no_reproducible_con_semilla(mod):
+        # Si fijar la semilla de 'random' reproduce el token, el token depende de un
+        # generador pseudoaleatorio no criptográfico: con su estado, se puede predecir.
+        random.seed(1234)
+        t1 = mod.generar_token_restablecimiento()
+        random.seed(1234)
+        t2 = mod.generar_token_restablecimiento()
+&gt;       assert t1 != t2, f"Mismo token con la misma semilla: {t1}"
+E       AssertionError: Mismo token con la misma semilla: 7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw
+E       assert '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw' != '7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw'
+
+tests\test_seguridad.py:21: AssertionError</failure></testcase></testsuite></testsuites>

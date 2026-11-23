@@ -1,0 +1,10 @@
+[
+  {
+    "paquete": "pytest",
+    "veredicto": "OK",
+    "motivos": [
+      "existe; comprobar además vulnerabilidades conocidas (pip-audit)"
+    ],
+    "fuente": "snapshot 2026-11-22"
+  }
+]

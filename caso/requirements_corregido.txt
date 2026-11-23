@@ -1,0 +1,2 @@
+# requirements.txt tras la revisión: solo dependencias necesarias y verificadas
+pytest>=8.0

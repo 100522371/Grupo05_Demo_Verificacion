@@ -1,0 +1,25 @@
+{
+  "herramientas": [
+    "ruff (reglas S = Bandit, BLE)"
+  ],
+  "hallazgos": [
+    {
+      "herramienta": "ruff",
+      "regla": "S608",
+      "linea": 24,
+      "mensaje": "Possible SQL injection vector through string-based query construction"
+    },
+    {
+      "herramienta": "ruff",
+      "regla": "BLE001",
+      "linea": 27,
+      "mensaje": "Do not catch blind exception: `Exception`"
+    },
+    {
+      "herramienta": "ruff",
+      "regla": "S311",
+      "linea": 34,
+      "mensaje": "Standard pseudo-random generators are not suitable for cryptographic purposes"
+    }
+  ]
+}

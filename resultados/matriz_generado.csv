@@ -1,0 +1,7 @@
+Defecto,L0 Tests base,L1 Tests ampliados,L2 Propiedades,L3 Tests seguridad,L4 Análisis estático,L5 Dependencias,L6 Revisión humana
+D1,✘,✔,✔,✘,✘,✘,☐
+D2a,✘,✔,✔,✘,✔,✘,☐
+D2b,✘,✘,✘,✔,✔,✘,☐
+D3,✘,✘,✘,✔,✔,✘,☐
+D4,✘,✘,✘,✘,✘,✔,☐
+D5,✘,✘,✘,✘,✘,✘,☐

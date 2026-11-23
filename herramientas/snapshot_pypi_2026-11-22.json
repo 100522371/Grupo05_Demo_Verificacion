@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "fecha_consulta": "2026-11-22",
+    "fuente": "Páginas de proyecto de pypi.org consultadas a mano para preparar la demo",
+    "uso": "Modo sin conexión. Con --online el script consulta la API JSON de PyPI en el momento.",
+    "aviso": "Los datos cambian: un nombre que hoy no existe puede registrarlo mañana cualquiera."
+  },
+  "pytest": {
+    "existe": true,
+    "ultima_version": "9.2.0",
+    "fecha_ultima_version": "2026-10-27"
+  },
+  "requests": {
+    "existe": true,
+    "ultima_version": "2.34.2",
+    "fecha_ultima_version": "2026-05-14"
+  },
+  "huggingface-cli": {
+    "existe": true,
+    "ultima_version": "0.1",
+    "n_versiones": 1,
+    "resumen": "HuggingFace integration.",
+    "descripcion": false,
+    "nota": "Nombre alucinado por LLM que un investigador registró como prueba de concepto (Lanyado, 2024). La herramienta oficial se instala con huggingface_hub[cli]."
+  },
+  "sqlite-injection-guard": {
+    "existe": false
+  }
+}

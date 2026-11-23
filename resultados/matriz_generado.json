@@ -1,0 +1,112 @@
+{
+  "version": "generado",
+  "resumen": {
+    "L0": "8/8 tests superados",
+    "L1": "3/7 tests superados",
+    "L2": "3/6 tests superados",
+    "L3": "0/2 tests superados",
+    "L4": "3 hallazgos (ruff (reglas S = Bandit, BLE))",
+    "L5": "1 de 2 dependencias marcadas",
+    "L6": "lista de control manual"
+  },
+  "detectado": {
+    "D1": {
+      "L0": false,
+      "L1": true,
+      "L2": true,
+      "L3": false,
+      "L4": false,
+      "L5": false,
+      "L6": false
+    },
+    "D2a": {
+      "L0": false,
+      "L1": true,
+      "L2": true,
+      "L3": false,
+      "L4": true,
+      "L5": false,
+      "L6": false
+    },
+    "D2b": {
+      "L0": false,
+      "L1": false,
+      "L2": false,
+      "L3": true,
+      "L4": true,
+      "L5": false,
+      "L6": false
+    },
+    "D3": {
+      "L0": false,
+      "L1": false,
+      "L2": false,
+      "L3": true,
+      "L4": true,
+      "L5": false,
+      "L6": false
+    },
+    "D4": {
+      "L0": false,
+      "L1": false,
+      "L2": false,
+      "L3": false,
+      "L4": false,
+      "L5": true,
+      "L6": false
+    },
+    "D5": {
+      "L0": false,
+      "L1": false,
+      "L2": false,
+      "L3": false,
+      "L4": false,
+      "L5": false,
+      "L6": false
+    }
+  },
+  "evidencias": {
+    "L0": [],
+    "L1": [
+      "test_d1_ampliado_entrada_de_humaneval_plus: assert [8, 1, 6] == [1, 6, 8]",
+      "test_d1_ampliado_identificadores_negativos: assert [3, -2, -1] == [-2, -1, 3]",
+      "test_d2a_ampliado_nombre_con_apostrofo: assert [] == [4]",
+      "test_d2a_ampliado_error_de_bd_no_se_oculta: Failed: DID NOT RAISE Error"
+    ],
+    "L2": [
+      "test_d1_propiedad_resultado_ordenado: AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))",
+      "test_d1_propiedad_oraculo_diferencial: AssertionError: Contraejemplo mínimo: ([1, 8], [8, 1]) (encontrado en el intento 8; entrada original ([56, 38, 46, 42, 26, 5, 13, 42, 39, 45], [43, 35, 51, -16, 17, 20, 38, -8, 36, 45, 13, 37]))",
+      "test_d2a_propiedad_nombres_aleatorios: Failed: Falla con el nombre \"'jzPde\" (intento 1): devolvió []"
+    ],
+    "L3": [
+      "test_d2b_seguridad_inyeccion_sql: AssertionError: La entrada maliciosa devolvió 5 pedidos de otros clientes",
+      "test_d3_seguridad_token_no_reproducible_con_semilla: AssertionError: Mismo token con la misma semilla: 7Ba46KPfVobWvMMjlhaE7eHCLfJqINDw"
+    ],
+    "L4": [
+      "ruff S608 línea 24: Possible SQL injection vector through string-based query construction",
+      "ruff BLE001 línea 27: Do not catch blind exception: `Exception`",
+      "ruff S311 línea 34: Standard pseudo-random generators are not suitable for cryptographic purposes"
+    ],
+    "L5": [
+      "sqlite-injection-guard: BLOQUEAR (no existe en PyPI: posible alucinación del asistente; no instalar)"
+    ],
+    "L6": []
+  },
+  "defectos": {
+    "D1": "clientes_comunes(): salida desordenada (fallo real documentado por EvalPlus)",
+    "D2a": "pedidos_de_cliente(): oculta errores y falla con apóstrofos (CWE-390)",
+    "D2b": "pedidos_de_cliente(): inyección SQL (CWE-89)",
+    "D3": "generar_token_restablecimiento(): aleatoriedad predecible (CWE-330)",
+    "D4": "requirements: paquete inexistente sugerido por el asistente",
+    "D5": "Diseño: nadie comprueba quién puede consultar los pedidos (CWE-862)"
+  },
+  "capas": {
+    "L0": "Tests base",
+    "L1": "Tests ampliados",
+    "L2": "Propiedades",
+    "L3": "Tests seguridad",
+    "L4": "Análisis estático",
+    "L5": "Dependencias",
+    "L6": "Revisión humana"
+  }
+}

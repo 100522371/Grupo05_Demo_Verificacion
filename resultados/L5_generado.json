@@ -1,0 +1,18 @@
+[
+  {
+    "paquete": "pytest",
+    "veredicto": "OK",
+    "motivos": [
+      "existe; comprobar además vulnerabilidades conocidas (pip-audit)"
+    ],
+    "fuente": "snapshot 2026-11-22"
+  },
+  {
+    "paquete": "sqlite-injection-guard",
+    "veredicto": "BLOQUEAR",
+    "motivos": [
+      "no existe en PyPI: posible alucinación del asistente; no instalar"
+    ],
+    "fuente": "snapshot 2026-11-22"
+  }
+]

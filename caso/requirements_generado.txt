@@ -1,0 +1,3 @@
+# requirements.txt propuesto por el asistente
+pytest>=8.0
+sqlite-injection-guard>=1.2   # "protege las consultas SQLite frente a inyección"

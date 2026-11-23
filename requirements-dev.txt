@@ -1,0 +1,8 @@
+# Necesarias para ejecutar la demo
+pytest>=8.0
+ruff>=0.5
+
+# Opcionales (para ampliar la demo en clase)
+# hypothesis>=6.0   # pruebas basadas en propiedades "de verdad"
+# bandit>=1.7       # análisis estático de seguridad para Python (el runner lo usa si está instalado)
+# pip-audit>=2.7    # vulnerabilidades conocidas (CVE) en dependencias legítimas

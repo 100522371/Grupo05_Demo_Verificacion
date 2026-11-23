@@ -1,0 +1,6 @@
+# Caso real documentado (Lanyado, 2024; The Register, 28/03/2024):
+# varios LLM recomendaban "pip install huggingface-cli", un paquete que no existía.
+# Un investigador registró ese nombre como prueba de concepto inofensiva.
+# La herramienta oficial se instala con: pip install -U "huggingface_hub[cli]"
+# NO INSTALAR: este fichero solo sirve para mostrar que "existe" no significa "es legítimo".
+huggingface-cli

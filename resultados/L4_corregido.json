@@ -1,0 +1,6 @@
+{
+  "herramientas": [
+    "ruff (reglas S = Bandit, BLE)"
+  ],
+  "hallazgos": []
+}
