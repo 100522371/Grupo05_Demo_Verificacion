@@ -4,7 +4,7 @@ Caso común del seminario *«¿Podemos fiarnos del código que genera la IA?»*
 (IAO 2026/27, grupo 5). El mismo módulo, generado «por un asistente», se pasa por
 siete capas de verificación y se construye una matriz **defecto × capa**.
 
-## Ejecutarlo (unos 2 minutos)
+## Ejecutarlo
 
 ```bash
 pip install -r requirements-dev.txt          # pytest y ruff
@@ -66,7 +66,9 @@ Evidencias concretas de esa ejecución:
 - **Versión corregida**: 23/23 tests, 0 hallazgos y dependencias OK. D5 sigue pendiente:
   es una decisión de diseño que ninguna herramienta toma por nosotros.
 
-## Condiciones y límites (decidlo en la exposición)
+La matriz y las evidencias están en `resultados/`.
+
+## Condiciones y límites
 
 - Los defectos se conocen de antemano. Solo `clientes_comunes` reproduce una salida real
   publicada (Liu et al., 2023); el resto son patrones documentados escritos para la clase.
@@ -79,13 +81,3 @@ Evidencias concretas de esa ejecución:
 - La comprobación de dependencias es una foto: un nombre que hoy no existe puede registrarlo
   mañana cualquiera. Por eso se comprueba en cada instalación, en la integración continua.
 - Datos 100 % sintéticos. No se ha introducido código ni información de terceros en ninguna herramienta.
-
-## Guion para la demo en directo (unos 3 minutos por subgrupo)
-
-1. **A**: enseñar el código y preguntar a la clase si ve el fallo. Ejecutar solo L0: todo verde.
-2. **A**: ejecutar L1 y L2. Aparecen `[8, 1, 6]` y el contraejemplo mínimo `([1, 8], [8, 1])`.
-3. **B**: «Ya pasa todos los tests funcionales… ¿lo subimos?». Ejecutar L3, L4 y L5:
-   inyección, token predecible y paquete inexistente.
-4. **B**: mostrar la matriz completa y la fila D5. Ejecutar la versión corregida.
-
-Si falla la red o el proyector, la matriz y las evidencias están en `resultados/`.
